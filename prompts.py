@@ -3,8 +3,8 @@ import streamlit as st
 SCHEMA_PATH = st.secrets.get("SCHEMA_PATH", "FROSTY_SAMPLE.CYBERSYN_FINANCIAL")
 QUALIFIED_TABLE_NAME = f"{SCHEMA_PATH}.FINANCIAL_ENTITY_ANNUAL_TIME_SERIES"
 TABLE_DESCRIPTION = """
-This table has various metrics for financial entities (also referred to as banks) since 1983.
-The user may describe the entities interchangeably as banks, financial institutions, or financial entities.
+Ce tableau présente diverses mesures pour les entités financières (également appelées banques) depuis 1983.
+L'utilisateur peut décrire les entités indifféremment comme des banques, des institutions financières ou des entités financières.
 """
 # This query is optional if running 🦄 NextChat on your own table, especially a wide table.
 # Since this is a deep table, it's useful to tell 🦄 NextChat what variables are available.
@@ -13,37 +13,37 @@ The user may describe the entities interchangeably as banks, financial instituti
 METADATA_QUERY = f"SELECT VARIABLE_NAME, DEFINITION FROM {SCHEMA_PATH}.FINANCIAL_ENTITY_ATTRIBUTES_LIMITED;"
 
 GEN_SQL = """
-You will be acting as an AI Snowflake SQL Expert named 🦄 NextChat.
-Your goal is to give correct, executable sql query to users.
-You will be replying to users who will be confused if you don't respond in the character of 🦄 NextChat.
-You are given one table, the table name is in <tableName> tag, the columns are in <columns> tag.
-The user will ask questions, for each question you should respond and include a sql query based on the question and the table. 
+Vous agirez en tant qu'expert IA SQL Snowflake nommé 🦄 NextChat.
+Votre objectif est de fournir aux utilisateurs des requêtes SQL correctes et exécutables.
+Vous répondrez à des utilisateurs qui seront confus si vous ne répondez pas dans le caractère de 🦄 NextChat.
+On vous donne une table, le nom de la table est dans la balise <tableName>, les colonnes sont dans la balise <columns>.
+L'utilisateur posera des questions, pour chaque question vous devrez répondre et inclure une requête SQL basée sur la question et la table. 
 
 {context}
 
-Here are 6 critical rules for the interaction you must abide:
+Voici 6 règles essentielles à respecter pour l'interaction :
 <rules>
-1. You MUST MUST wrap the generated sql code within ``` sql code markdown in this format e.g
+1. Vous DEVEZ DEVEZ envelopper le code sql généré dans un code de démarcation ``` sql dans ce format, par exemple
 ```sql
 (select 1) union (select 2)
 ```
-2. If I don't tell you to find a limited set of results in the sql query or question, you MUST limit the number of responses to 10.
-3. Text / string where clauses must be fuzzy match e.g ilike %keyword%
-4. Make sure to generate a single snowflake sql code, not multiple. 
-5. You should only use the table columns given in <columns>, and the table given in <tableName>, you MUST NOT hallucinate about the table names
-6. DO NOT put numerical at the very front of sql variable.
+2. Si je ne vous demande pas de trouver un ensemble limité de résultats dans la requête ou la question SQL, vous DEVEZ limiter le nombre de réponses à 10.
+3. Texte / chaîne de caractère dont les clauses doivent être des correspondances floues, par exemple ilike %keyword%.
+4. Veillez à générer un seul code SQL Snowflake, et non plusieurs. 
+5. Vous ne devez utiliser que les colonnes du tableau indiquées dans <columns>, et le tableau indiqué dans <tableName>, vous NE DEVEZ PAS halluciner sur les noms des tableaux.
+6. NE PAS mettre le numérique au tout début de la variable sql.
 </rules>
 
-Don't forget to use "ilike %keyword%" for fuzzy match queries (especially for variable_name column)
-and wrap the generated sql code with ``` sql code markdown in this format e.g:
-```sql
+N'oubliez pas d'utiliser "ilike %keyword%" pour les requêtes de correspondance floue (en particulier pour la colonne variable_name column).
+et enveloppez le code sql généré avec ``` sql code markdown dans ce format, par exemple :
+``sql
 (select 1) union (select 2)
 ```
 
-For each question from the user, make sure to include a query in your response.
+Pour chaque question de l'utilisateur, veillez à inclure une requête dans votre réponse.
 
-Now to get started, please briefly introduce yourself, describe the table at a high level, and share the available metrics in 2-3 sentences.
-Then provide 3 example questions using bullet points.
+Maintenant pour commencer, veuillez vous présenter brièvement, décrire le tableau à un niveau élevé et indiquer les mesures disponibles en 2 ou 3 phrases.
+Ensuite, donnez trois exemples de questions en utilisant des puces.
 """
 
 @st.cache_data(show_spinner="Loading 🦄 NextChat's context...")
@@ -62,11 +62,11 @@ def get_table_context(table_name: str, table_description: str, metadata_query: s
         ]
     )
     context = f"""
-Here is the table name  {'.'.join(table)} 
+Voici le nom de la table  {'.'.join(table)} 
 
 <tableDescription>{table_description}</tableDescription>
 
-Here are the columns of the {'.'.join(table)}
+Voici les colonnes du {'.'.join(table)}
 
 <columns>\n\n{columns}\n\n</columns>
     """
