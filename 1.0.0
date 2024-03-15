@@ -1,0 +1,55 @@
+Channels:
+ - defaults
+Platform: win-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: C:\Users\ymondongue\Anaconda3
+
+  added / updated specs:
+    - openai
+    - snowflake-snowpark-python
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    asn1crypto-1.5.1           |   py39haa95532_0         171 KB
+    cryptography-41.0.7        |   py39h89fc84f_0         1.1 MB
+    h11-0.14.0                 |   py39haa95532_0          91 KB
+    httpcore-1.0.2             |   py39haa95532_0          84 KB
+    httpx-0.26.0               |   py39haa95532_0         186 KB
+    openai-1.9.0               |   py39haa95532_0         268 KB
+    pandas-stubs-1.5.3.230203  |   py39haa95532_0          93 KB
+    snowflake-connector-python-3.7.0|   py39hd77b12b_0         933 KB
+    snowflake-snowpark-python-1.12.0|   py39haa95532_0         547 KB
+    types-pytz-2022.4.0.0      |   py39haa95532_1          17 KB
+    ------------------------------------------------------------
+                                           Total:         3.4 MB
+
+The following NEW packages will be INSTALLED:
+
+  asn1crypto         pkgs/main/win-64::asn1crypto-1.5.1-py39haa95532_0 
+  h11                pkgs/main/win-64::h11-0.14.0-py39haa95532_0 
+  httpcore           pkgs/main/win-64::httpcore-1.0.2-py39haa95532_0 
+  httpx              pkgs/main/win-64::httpx-0.26.0-py39haa95532_0 
+  openai             pkgs/main/win-64::openai-1.9.0-py39haa95532_0 
+  pandas-stubs       pkgs/main/win-64::pandas-stubs-1.5.3.230203-py39haa95532_0 
+  snowflake-connect~ pkgs/main/win-64::snowflake-connector-python-3.7.0-py39hd77b12b_0 
+  snowflake-snowpar~ pkgs/main/win-64::snowflake-snowpark-python-1.12.0-py39haa95532_0 
+  types-pytz         pkgs/main/win-64::types-pytz-2022.4.0.0-py39haa95532_1 
+
+The following packages will be DOWNGRADED:
+
+  cryptography                        42.0.2-py39h89fc84f_0 --> 41.0.7-py39h89fc84f_0 
+  pyopenssl                           24.0.0-py39haa95532_0 --> 23.2.0-py39haa95532_0 
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
