@@ -1,5 +1,5 @@
 OpenAI
 streamlit
-
+snowflake-snowpark-python[pandas]==1.7.0
 
 
